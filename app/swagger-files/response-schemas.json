@@ -1,0 +1,239 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://httpbin.org"
+    }
+  ],
+  "info": {
+    "title": "response schemas",
+    "version": "1.0"
+  },
+  "paths": {
+    "/anything/array-of-primitives": {
+      "get": {
+        "summary": "Array of primitives",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/anything/object": {
+      "get": {
+        "summary": "Object",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/anything/array-of-objects": {
+      "get": {
+        "summary": "Array of objects",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/anything/recursive": {
+      "get": {
+        "summary": "Recursive $ref lookup",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Node"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Node": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Node"
+            }
+          }
+        }
+      },
+      "Object": {
+        "type": "object",
+        "properties": {
+          "primitive": {
+            "type": "string"
+          },
+          "object": {
+            "type": "object",
+            "properties": {
+              "primitive": {
+                "type": "boolean"
+              }
+            }
+          },
+          "array": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "primitive": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "pets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        }
+      },
+      "Pet": {
+        "type": "object",
+        "required": ["name", "photoUrls"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "name2": {
+            "type": "string"
+          },
+          "name3": {
+            "type": "string"
+          },
+          "name4": {
+            "type": "string"
+          },
+          "name5": {
+            "type": "string"
+          },
+          "name6": {
+            "type": "string"
+          },
+          "name7": {
+            "type": "string"
+          },
+          "name8": {
+            "type": "string"
+          },
+          "name9": {
+            "type": "string"
+          },
+          "name10": {
+            "type": "string"
+          },
+          "name11": {
+            "type": "string"
+          },
+          "name12": {
+            "type": "string"
+          },
+          "name13": {
+            "type": "string"
+          },
+          "name14": {
+            "type": "string"
+          },
+          "name15": {
+            "type": "string"
+          },
+          "name16": {
+            "type": "string"
+          },
+          "name17": {
+            "type": "string"
+          },
+          "name18": {
+            "type": "string"
+          },
+          "name19": {
+            "type": "string"
+          },
+          "photoUrls": {
+            "type": "array",
+            "xml": {
+              "name": "photoUrl",
+              "wrapped": true
+            },
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "pet status in the store",
+            "enum": ["available", "pending", "sold"]
+          }
+        },
+        "xml": {
+          "name": "Pet"
+        }
+      }
+    },
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "securitySchemes": {},
+    "headers": {}
+  },
+  "x-explorer-enabled": true,
+  "x-samples-enabled": true,
+  "x-samples-languages": [
+    "curl",
+    "node",
+    "ruby",
+    "javascript",
+    "python"
+  ]
+}

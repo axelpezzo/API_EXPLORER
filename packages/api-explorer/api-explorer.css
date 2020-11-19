@@ -1,0 +1,531 @@
+form.rjsf {
+  --field-tag-color: #efefef;
+  --field-border-color: #d1d1d1;
+  --custom-border-color: #e8e8e8;
+  --antd-primary-color: #40a9ff;
+  --trash-bin-red: #f5222d;
+}
+
+/* Add margin to left- and right-sides of RJSF component. */
+form.rjsf {
+  margin: 0% 3%;
+}
+
+/* Remove borders surrounding params. */
+form.rjsf fieldset {
+  border: none;
+}
+
+/* Ensure nested objects retain full width. */
+form.rjsf fieldset fieldset {
+  padding: 0;
+  width: 100%;
+}
+
+/* Remove margin from nested forms (for file uploads). */
+form form.rjsf {
+  margin: 2% 2%;
+}
+
+/* Style table header. */
+.param-type-header {
+  color: #aeaeae;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ddd;
+  margin-left: 3%;
+}
+
+/* Style param labels. */
+form.rjsf .form-group .control-label {
+  font-weight: 400;
+  text-align: left;
+  min-width: 100px;
+  float: left;
+  font-weight: bold;
+  flex: 1 1 150px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5px;
+  word-break: break-all;
+}
+
+/* Make required asterisks red */
+form.rjsf .form-group .required {
+  color: #ef6363;
+}
+
+/* Style param category labels. */
+form.rjsf legend {
+  font-weight: bold;
+  margin: 10px 0px;
+}
+
+/* Style input fields similar to current explorer. */
+form.rjsf input {
+  border: 1px solid var(--field-border-color) !important;
+  border-radius: 2px;
+  padding: 8px 10px;
+  margin-left: 5px;
+}
+
+form.rjsf textarea {
+  border: 1px solid var(--field-border-color) !important;
+  border-radius: 2px;
+  padding: 8px 10px;
+  margin-left: 5px;
+}
+
+/* Prevent input fields from becoming too wide. */
+form.rjsf .form-group .form-control {
+  max-width: 100%;
+  flex: 1 1 150px;
+}
+
+form.rjsf .form-group.field {
+  min-height: 60px;
+}
+
+/* Align nested input fields. */
+form.rjsf fieldset fieldset .form-group.field .field-description {
+  margin-left: 1em;
+}
+
+/* Add padding and top-border around nested form-groups. */
+form.rjsf .form-group .form-group {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid var(--custom-border-color);
+}
+
+/* Hide border for first form-group in an object. */
+form.rjsf fieldset .form-group:first-of-type {
+  border-top: none;
+}
+
+/* Render each object's param container as a flex object.
+   Allows for better aligning of fields, labels, etc. */
+form.rjsf fieldset .form-group {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+}
+
+/* Parameters for nested objects should be indented. */
+form.rjsf fieldset fieldset .form-group {
+  padding-left: 1%;
+}
+
+form.rjsf fieldset fieldset .form-group label {
+  padding-left: 0%;
+  margin-left: 0% !important;
+}
+
+form.rjsf fieldset fieldset legend {
+  padding-left: 0%;
+}
+
+/* Allow description to scale to 2x size of input field and
+   param titles (some endpoints have lengthy descriptions.
+   Also add styling. */
+form.rjsf .field-description {
+  flex: 2 1 100px;
+  text-align: left;
+  font-size: 14px !important;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
+/* Add thick left border to nested params (show hierarchy). */
+form.rjsf fieldset fieldset .form-group {
+  border-left: 10px solid var(--custom-border-color);
+}
+
+/* Add margin to label for nested params. */
+form.rjsf fieldset fieldset .form-group label {
+  margin-left: 1em;
+}
+
+form.rjsf .form-group.field select {
+  margin-left: 15px;
+}
+
+/* Style select boxes. */
+form.rjsf .field .form-group select {
+  border: 1px solid var(--field-border-color) !important;
+  border-radius: 2px;
+  padding: 0px 10px;
+  margin-left: 15px;
+  height: 30px;
+}
+
+/* Display arrays as flex containers, don't wrap, center-align vertically. */
+.array-item {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  flex: 1 1 100%;
+}
+
+/* Remove left- */
+.array-item .form-group.field {
+  border-left: none;
+}
+
+/* For each nested object in an array, add border. */
+.array-item fieldset {
+  /* border-left: 10px solid #f8f8f8; */
+  border-left: 10px solid var(--field-tag-color);
+  box-shadow: -4px 5px 15px -2px rgba(0, 0, 0, 0.10);
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: 1em;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+ /* For each nested object in an array, unset max-width for description. */
+ .array-item fieldset .field-description {
+  max-width: unset;
+  text-align: left;
+}
+
+/* For descriptions of arrays or nested objects, right-align and add padding above. */
+.field-array > legend {
+  text-align: left;
+  padding-top: 5px !important;
+}
+
+/* Similarly as above, but for .field-description's instead of <legend>'s. */
+.field-array > .field-description {
+  text-align: left;
+}
+
+/* For arrays, override Bootstrap col-xs-9 properties. */
+.array-item .col-xs-9 {
+  padding: 0px;
+  flex-basis: 80%;
+  min-width: 200px;
+  max-width: 90%;
+}
+
+/* Ensure that nested arrays have full-width input fields. */
+.array-item .col-xs-9 .form-group .form-control {
+  width: 100%;
+}
+
+/* Remove left-margins from rows that are offset with Bootstrap's grid system. */
+form.rjsf .row .col-xs-offset-9 {
+  margin-left: 0px;
+}
+
+/* Override Bootstrap properties for "add" button (for arrays). */
+.array-item-add.col-xs-3 {
+  flex-basis: unset;
+  max-width: unset;
+  margin-top: 10px;
+}
+
+/* For up/down/remove toolbox for items in arrays, change default size. */
+.array-item-toolbox.col-xs-3 {
+  flex-basis: 12%;
+}
+
+/* Align up/down/remove toolbox to the right. */
+.array-item-toolbox .btn-group {
+  justify-content: flex-start !important;
+}
+
+/* Reset padding and remove border + other styles from buttons in up/down/remove toolbox. */
+.array-item-toolbox .btn {
+  padding-left: 8px;
+  padding-right: 8px;
+  border: none;
+  width: 36px !important;
+  height: 36px !important;
+  flex: unset !important;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0);
+}
+
+form.rjsf .btn:active {
+  box-shadow: none;
+}
+
+form.rjsf .btn:focus {
+  outline: none;
+}
+
+form.rjsf .btn.btn-default {
+  border: none;
+}
+
+form.rjsf .btn.btn-default:hover {
+  border: none;
+}
+
+form.rjsf .btn.btn-add {
+  transform: rotate(45deg);
+  font-weight: bold;
+  font-size: 12px;
+  color: white;
+  background: var(--antd-primary-color);
+  margin-bottom: 1em;
+  border-radius: 100% !important;
+  padding: 2px 7px !important;
+}
+
+form.rjsf .btn.btn-add::after {
+  content: '✕';
+  font-size: 12px;
+  font-weight: bold;
+}
+
+form.rjsf .btn.array-item-move-up::after {
+  content: '↑';
+}
+
+form.rjsf .btn.array-item-move-down::after {
+  content: '↓';
+}
+
+form.rjsf .btn.array-item-remove::after {
+  content: '✕';
+}
+
+/* Fix color of up/down buttons when disabled. */
+form.rjsf button[disabled] {
+  color: #d2d2d2 !important;
+}
+
+/* Add type labels. */
+.field.field-array-of-string legend::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'array of strings';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-array-of-integer legend::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'array of integers';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-array-of-object legend::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'array of objects';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-array-of-boolean legend::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'array of booleans';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-integer.field-int32 label::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'integer: int32';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-integer.field-int64 label::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'integer: int64';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-number.field-float label::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'number: float';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-number.field-double label::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'number: double';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-string:not(.field-json):not(.field-file) label::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'string';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-json label::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'json';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-file label::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'file';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field.field-boolean label::after {
+  color: rgba(0, 0, 0, 0.6);
+  content: 'boolean';
+  background: var(--field-tag-color);
+  border-radius: 3px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-left: 10px;
+  padding: 3px 6px;
+}
+
+.field label::after {
+  display: inline-block;
+  width: fit-content;
+}
+/* Fix spacing on input fields. */
+form.rjsf input[type='file'] {
+  font-size: 0.8em;
+  border: none !important;
+  margin-left: 0px;
+  padding: 10px;
+}
+
+/* Fix alignment of input field. */
+.form-group.field p {
+  margin-bottom: 0px;
+}
+
+/* Ensure top-level elements are vertically centered within their form-group's,
+   and that all input fields take advantage of available width. */
+
+form.rjsf fieldset {
+  padding: 0em 0.625em 0.75em;
+  width: 100%;
+}
+
+.form-group.field {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+/*TODO fix this*/
+/*.array-item .field-string::before {
+  content: 'string';
+  font-weight: lighter;
+  float: right;
+  margin-right: 3%;
+}*/
+
+.response-schema {
+  overflow-y: auto;
+}
+
+.hub-reference-response-definitions.dark p,
+.hub-reference-response-definitions.dark h3,
+.hub-reference-response-definitions.dark th,
+.hub-reference-response-definitions.dark td {
+  color: rgba(255,255,255,0.7);
+}
+
+form.rjsf .form-group .array-item-add {
+  padding-left: 10px;
+}
+
+/* Remove x button icon. */
+form.rjsf .form-group .btn.array-item-remove::after {
+  content: ''
+}
+
+/* Add delete icon substituting all glyphicon remove with the trash bin. */
+form.rjsf .form-group button i.glyphicon.glyphicon-remove::after {
+  margin-top: 4px;
+  border: 1px solid var(--trash-bin-red);
+  padding: 8px 6px 4px 6px;
+  border-radius: 100%;
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='15' height='15' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cpath id='delete-a' d='M7,4 L7,1 C7,0.44771525 7.44771525,0 8,0 L16,0 C16.5522847,0 17,0.44771525 17,1 L17,4 L23,4 C23.5522847,4 24,4.44771525 24,5 C24,5.55228475 23.5522847,6 23,6 L21,6 L21,23 C21,23.5522847 20.5522847,24 20,24 L4,24 C3.44771525,24 3,23.5522847 3,23 L3,6 L1,6 C0.44771525,6 0,5.55228475 0,5 C0,4.44771525 0.44771525,4 1,4 L7,4 Z M9,4 L15,4 L15,2 L9,2 L9,4 Z M19,6 L5,6 L5,22 L19,22 L19,6 Z M11,11 C11,10.4477153 11.4477153,10 12,10 C12.5522847,10 13,10.4477153 13,11 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,11 Z M7,11 C7,10.4477153 7.44771525,10 8,10 C8.55228475,10 9,10.4477153 9,11 L9,17 C9,17.5522847 8.55228475,18 8,18 C7.44771525,18 7,17.5522847 7,17 L7,11 Z M15,11 C15,10.4477153 15.4477153,10 16,10 C16.5522847,10 17,10.4477153 17,11 L17,17 C17,17.5522847 16.5522847,18 16,18 C15.4477153,18 15,17.5522847 15,17 L15,11 Z'/%3E%3C/defs%3E%3Cuse fill='%23f5222d' fill-rule='evenodd' xlink:href='%23delete-a'/%3E%3C/svg%3E%0A") !important;
+}
+
+form.rjsf .form-group select {
+  background: white;
+}
+
+.multiple-select-choices-list .multiple-select-item {
+  background-color: #1890ff;
+  border: 1px solid #1890ff;
+}
+
+.choices__list--multiple .choices__item.is-highlighted {
+  background-color: #1890ff;
+  border: 1px solid #1890ff;
+}

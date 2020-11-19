@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap');
+
+body{
+  background-color: #F5F6F7 !important;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+h1, h2, h3 ,h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700 !important;
+}
+
+#oas-initial-description{
+  margin: 0px 10px !important;
+}
+
+#oas-initial-description p{
+  margin-bottom: 0px;
+}
+
+.api-list-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  height: 80px;
+}
+
+.api-list-header img{
+  width: auto;
+  height: 50px;
+  margin-right: 1rem;
+  margin-right: 1rem;
+}
+
+.api-list-header-logo{
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  line-height: 1.2;
+}
+
+.api-list-header-logo h5{
+  margin-bottom: 0px;
+}
+
+.api-list-header-menu{
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+}
+
+.api-list-header-menu a{
+  display: inline-block;
+  margin-right: 10px;
+  padding: 12px;
+}
+
+.api-list-header-menu svg{
+  stroke: #aaa;
+  height: 22px;
+  width: 22px;
+}
+
+@media screen and (max-width: 800px) {
+  .code-wrapper {
+    display: block !important;
+  }
+
+  .api-list-header-menu svg{
+    height: 18px;
+    width: 18px;
+  }
+
+  .api-list-header-logo h5{
+    display: none;
+  }
+}

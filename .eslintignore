@@ -1,0 +1,9 @@
+**/node_modules
+coverage
+index.js
+emojis.js
+marked.js
+
+app/dist
+app/demo-bundle.*
+app/reference-bundle.*

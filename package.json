@@ -1,0 +1,69 @@
+{
+  "name": "api-explorer",
+  "description": "API explorer (MIA Plaform branch)",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node scripts/update-example-swagger-files && eslint -f unix example --ext js --ext jsx && lerna run test --stream",
+    "start": "node scripts/update-example-swagger-files && webpack-dev-server",
+    "build": "build.sh & lerna run build",
+    "watch": "lerna run watch --stream",
+    "deploy": "npm run build && npx gh-pages --dotfiles -d app/dist",
+    "prepack": "npm ci && npm run build",
+    "publish": "lerna publish",
+    "boot": "npx lerna bootstrap",
+    "version": "auto-changelog -v $(node -e \"console.log('v' + require('./lerna.json').version)\") && git add CHANGELOG.md"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
+  },
+  "author": "Intesys s.r.l.",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axelpezzo/api-portal"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/preset-env": "^7.0.0-beta.55",
+    "@babel/preset-react": "^7.0.0-beta.55",
+    "auto-changelog": "^1.10.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.0-beta.4",
+    "coveralls": "^3.0.3",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.3.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "gh-pages": "^1.2.0",
+    "jest": "^25.0.0",
+    "lerna": "^3.4.0",
+    "livereactload": "^4.0.0-beta.2",
+    "style-loader": "^0.22.0",
+    "uglify-es": "^3.2.1",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.5",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "antd": "^3.16.3",
+    "babel-plugin-import": "^1.11.0",
+    "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.15",
+    "prop-types": "^15.6.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-feather": "^2.0.9",
+    "react-hot-loader": "^3.1.3",
+    "swagger2openapi": "^3.2.13",
+    "whatwg-fetch": "^2.0.3"
+  }
+}
